@@ -32,4 +32,8 @@ https://jnikenoueba.medium.com/unit-and-integration-testing-with-fastapi-e307972
 
 ## Video Demo
 
-Video Demo Link: https://drive.google.com/file/d/138nn66obP0KkEr1hSsU89oliUnHTOGqj/view?usp=drive_link
+Video Demo Link: 
+
+https://drive.google.com/file/d/138nn66obP0KkEr1hSsU89oliUnHTOGqj/view?usp=drive_link
+
+https://drive.google.com/file/d/1QTTDLQYqQ62XKulFs68ZDVKOIgHihV4I/view?usp=drive_link
