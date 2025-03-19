@@ -4,6 +4,11 @@ from app.main import app
 client = TestClient(app)
 
 
+def test_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello World"}
+
 def test_read_item():
     response = client.get("/items/foo", headers={"X-Token": "coneofsilence"})
     assert response.status_code == 200
@@ -13,18 +18,15 @@ def test_read_item():
         "description": "There goes my hero",
     }
 
-
 def test_read_item_bad_token():
     response = client.get("/items/foo", headers={"X-Token": "hailhydra"})
     assert response.status_code == 400
     assert response.json() == {"detail": "Invalid X-Token header"}
 
-
 def test_read_nonexistent_item():
     response = client.get("/items/baz", headers={"X-Token": "coneofsilence"})
     assert response.status_code == 404
     assert response.json() == {"detail": "Item not found"}
-
 
 def test_create_item():
     response = client.post(
@@ -39,7 +41,6 @@ def test_create_item():
         "description": "The Foo Barters",
     }
 
-
 def test_create_item_bad_token():
     response = client.post(
         "/items/",
@@ -48,7 +49,6 @@ def test_create_item_bad_token():
     )
     assert response.status_code == 400
     assert response.json() == {"detail": "Invalid X-Token header"}
-
 
 def test_create_existing_item():
     response = client.post(
