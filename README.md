@@ -1,6 +1,7 @@
 # fastapi-sample-project
 
 Tutorial link
+
 https://fastapi.tiangolo.com/tutorial/testing/#extended-testing-file
 
 https://jnikenoueba.medium.com/unit-and-integration-testing-with-fastapi-e30797242cd7
@@ -26,4 +27,4 @@ https://jnikenoueba.medium.com/unit-and-integration-testing-with-fastapi-e307972
 
 ## Video Demo
 
-Video Demo Link: (Available soon)
+Video Demo Link: https://drive.google.com/file/d/1LmMwLeT9QKm1sf5GTtuBN0VnMQfqWvSg/view?usp=drive_link
