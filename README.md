@@ -1,5 +1,10 @@
 # fastapi-sample-project
 
+## Overview  
+This is a FastAPI backend that exposes a secure **GET** endpoint 
+- Includes **API key authentication** for security
+- Implements **unit testing** based on **HTTPX** and can be used directly with FastAPI 
+
 Tutorial link
 
 https://fastapi.tiangolo.com/tutorial/testing/#extended-testing-file
@@ -27,4 +32,4 @@ https://jnikenoueba.medium.com/unit-and-integration-testing-with-fastapi-e307972
 
 ## Video Demo
 
-Video Demo Link: https://drive.google.com/file/d/1LmMwLeT9QKm1sf5GTtuBN0VnMQfqWvSg/view?usp=drive_link
+Video Demo Link: https://drive.google.com/file/d/138nn66obP0KkEr1hSsU89oliUnHTOGqj/view?usp=drive_link
