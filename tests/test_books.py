@@ -13,7 +13,6 @@ test_books = [
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_books():
-    # global BOOKS
     BOOKS.clear()
     BOOKS.extend(test_books)
     
