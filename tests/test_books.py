@@ -2,6 +2,7 @@ import json
 import os
 import pytest
 from fastapi.testclient import TestClient
+print("TestClient loaded from:", TestClient.__module__)
 from app.main import app, BOOKS_FILE, BOOKS, Book
 
 client = TestClient(app)
