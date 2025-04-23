@@ -2,9 +2,9 @@ import json
 import os
 import pytest
 from fastapi.testclient import TestClient
-from app.main import root, BOOKS_FILE, BOOKS, Book
+from app.main import app, BOOKS_FILE, BOOKS, Book
 
-client = TestClient(root)
+client = TestClient(app)
 
 test_books = [
     {"name": "Book One", "genre": "fiction", "price": 10.99, "book_id": "1"},
