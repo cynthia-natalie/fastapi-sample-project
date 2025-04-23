@@ -1,7 +1,7 @@
 import pytest
 
 # Assuming you have a crud.py with get_item and create_item functions
-from .app.crud import (
+from app.crud import (
     get_item,
     get_all_items,
     get_last_item,
