@@ -36,7 +36,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest httpx pytest-cov tox
         pip install fastapi==0.115.8 starlette==0.45.3
-        if [ -f requirement.txt ]; then pip install -r requirement.txt; fi
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
