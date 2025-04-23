@@ -29,9 +29,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip uninstall starlette fastapi
-        pip install flake8 pytest fastapi==0.110.0 starlette==0.36.3 httpx
-        if [ -f requirement.txt ]; then pip install -r requirement.txt; fi
+        pip install flake8 pytest httpx
+        pip install fastapi==0.110.0 starlette==0.36.3
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Check installed versions
+      run: |
+        pip show fastapi
+        pip show starlette
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
