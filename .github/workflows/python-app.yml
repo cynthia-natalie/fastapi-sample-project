@@ -45,4 +45,5 @@ jobs:
 
     - name: Test with pytest
       run: |
+        python -m uvicorn app.main:app --reload
         python -m pytest --maxfail=1 --disable-warnings -v
