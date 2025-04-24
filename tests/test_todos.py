@@ -5,8 +5,8 @@ from unittest.mock import Mock, patch
 from nose.tools import assert_is_none, assert_list_equal
 
 # Local imports...
-from app.services import get_todos
-
+from app.services import get_todos, get_uncompleted_todos
+from app.constants import SKIP_REAL
 
 @patch('app.services.requests.get')
 def test_getting_todos_when_response_is_ok(mock_get):
