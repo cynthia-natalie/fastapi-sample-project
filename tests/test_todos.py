@@ -89,7 +89,7 @@ def test_integration_contract():
     actual_keys = actual.json().pop().keys()
 
     # Call the service to hit the mocked API.
-    with patch('project.services.requests.get') as mock_get:
+    with patch('app.services.requests.get') as mock_get:
         mock_get.return_value.ok = True
         mock_get.return_value.json.return_value = [{
             'userId': 1,
