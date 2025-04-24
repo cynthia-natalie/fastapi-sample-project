@@ -8,7 +8,7 @@ from nose.tools import assert_is_none, assert_list_equal
 from app.services import get_todos
 
 
-@patch('project.services.requests.get')
+@patch('app.services.requests.get')
 def test_getting_todos_when_response_is_ok(mock_get):
     todos = [{
         'userId': 1,
@@ -29,7 +29,7 @@ def test_getting_todos_when_response_is_ok(mock_get):
     assert_list_equal(response.json(), todos)
 
 
-@patch('project.services.requests.get')
+@patch('app.services.requests.get')
 def test_getting_todos_when_response_is_not_ok(mock_get):
     # Configure the mock to not return a response with an OK status code.
     mock_get.return_value.ok = False
@@ -40,7 +40,7 @@ def test_getting_todos_when_response_is_not_ok(mock_get):
     # If the response contains an error, I should get no todos.
     assert_is_none(response)
 
-@patch('project.services.get_todos')
+@patch('app.services.get_todos')
 def test_getting_uncompleted_todos_when_todos_is_not_none(mock_get_todos):
     todo1 = {
         'userId': 1,
@@ -69,7 +69,7 @@ def test_getting_uncompleted_todos_when_todos_is_not_none(mock_get_todos):
     assert_list_equal(uncompleted_todos, [todo1])
 
 
-@patch('project.services.get_todos')
+@patch('app.services.get_todos')
 def test_getting_uncompleted_todos_when_todos_is_none(mock_get_todos):
     # Configure mock to return None.
     mock_get_todos.return_value = None
