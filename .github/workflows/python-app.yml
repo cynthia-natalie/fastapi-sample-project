@@ -34,7 +34,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest httpx pytest-cov tox ruff
+        pip install pytest httpx pytest-cov tox ruff nose
         pip install fastapi==0.115.8 starlette==0.45.3
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
