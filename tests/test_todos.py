@@ -2,7 +2,7 @@
 from unittest.mock import Mock, patch
 
 # Third-party imports...
-from nose.tools import assert_is_none, assert_list_equal
+from nose.tools import assert_is_none, assert_list_equal, assert_true
 
 # Local imports...
 from app.services import get_todos, get_uncompleted_todos
