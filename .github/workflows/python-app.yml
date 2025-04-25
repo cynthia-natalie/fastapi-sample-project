@@ -8,17 +8,12 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_run:
-    workflows: [ "Python application" ]
-    types:
-      - completed
 
 permissions:
   contents: read
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +27,7 @@ jobs:
 
     - name: Clear pip cache and clean up
       run: |
-        pip uninstall -y starlette fastapi
+        pip uninstall -y starlette fastapi || true
         pip cache purge
 
     - name: Install dependencies
@@ -46,8 +41,7 @@ jobs:
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
     - name: Lint with ruff
-      run: |
-        ruff check . --exit-zero
+      run: ruff check . --exit-zero
 
     - name: Run security analysis with Bandit
       run: |
@@ -82,22 +76,23 @@ jobs:
 
   notify:
     needs: build
-    if: always()
     runs-on: ubuntu-latest
+    if: always()
     steps:
     - name: Send email on workflow completion
       uses: dawidd6/action-send-mail@v3
       with:
-        server_address: smtp.example.com
+        server_address: smtp.example.com  # Replace with your SMTP server
         server_port: 587
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: GitHub Actions CI result for ${{ github.repository }}
+        subject: GitHub Actions CI Result for ${{ github.repository }}
         to: cynthianatalie573@gmail.com
         from: GitHub Actions <cynthianatalie573@gmail.com>
         body: |
           CI Workflow has completed.
-          Status: ${{ job.status }}
+          Status: ${{ needs.build.result }}
+          Branch: ${{ github.ref_name }}
           Commit: ${{ github.sha }}
-          See details at: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
+          Triggered by: ${{ github.actor }}
+          See details: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
