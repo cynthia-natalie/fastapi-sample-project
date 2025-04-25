@@ -101,13 +101,13 @@ jobs:
         from: GitHub Actions <cynthianatalie573@gmail.com>
         body: |
           CI Workflow has completed.
-          ✅ Status: ${{ needs.build.result }}
-          🌿 Branch: ${{ github.ref_name }}
-          🔀 Commit: ${{ github.sha }}
-          👤 Triggered by: ${{ github.actor }}
+          Status: ${{ needs.build.result }}
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          Triggered by: ${{ github.actor }}
 
-          📊 Reports:
-          - Coverage: htmlcov/index.html
+          Reports:
+          - Coverage Report: htmlcov/index.html
           - Test Results: junit/test-results.xml
           - Bandit Security: bandit-report.html
           - Semgrep Security: semgrep-report.json
