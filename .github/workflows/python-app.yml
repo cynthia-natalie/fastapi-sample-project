@@ -82,7 +82,7 @@ jobs:
     - name: Send email on workflow completion
       uses: dawidd6/action-send-mail@v3
       with:
-        server_address: smtp.example.com  # Replace with your SMTP server
+        server_address: smtp.gmail.com  # Replace with your SMTP server
         server_port: 587
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
