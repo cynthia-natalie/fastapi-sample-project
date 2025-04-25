@@ -49,11 +49,17 @@ jobs:
 
     - name: Install Semgrep manually
       run: |
-        # Download and install the pre-built Semgrep binary
+        # Download the correct Semgrep binary
         curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz -o semgrep.tar.gz
+        
+        # Verify the file format before extracting (check for tar.gz)
+        file semgrep.tar.gz
+        
+        # Extract and install Semgrep binary
         tar -xvzf semgrep.tar.gz
         sudo mv semgrep /usr/local/bin/semgrep
-        # Verify installation
+        
+        # Verify the installation
         semgrep --version
 
     - name: Run security checks with Semgrep
