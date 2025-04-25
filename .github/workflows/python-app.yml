@@ -112,5 +112,5 @@ jobs:
           - Bandit Security: bandit-report.html
           - Semgrep Security: semgrep-report.json
 
-          View full logs and reports:
+          See details:
           https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
