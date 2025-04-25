@@ -37,10 +37,11 @@ jobs:
         pip install fastapi==0.115.8 starlette==0.45.3
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    # Install Semgrep manually from the official GitHub release
     - name: Install Semgrep
       run: |
-        curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz | tar xz -C /usr/local/bin
+        curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz -o semgrep.tar.gz
+        tar -xvzf semgrep.tar.gz
+        sudo mv semgrep /usr/local/bin
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
