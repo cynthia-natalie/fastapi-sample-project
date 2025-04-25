@@ -1,5 +1,5 @@
 # This workflow installs Python dependencies, runs tests, lints the codebase,
-# performs static security analysis (Bandit, Semgrep, SonarCloud), and sends email notifications.
+# performs static security analysis (Bandit, Semgrep), and sends email notifications.
 
 name: Python application
 
@@ -33,15 +33,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest httpx pytest-cov tox ruff bandit nose requests
+        pip install pytest httpx pytest-cov tox ruff bandit nose requests semgrep
         pip install fastapi==0.115.8 starlette==0.45.3
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: Install Semgrep
-      run: |
-        curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz -o semgrep.tar.gz
-        tar -xvzf semgrep.tar.gz
-        sudo mv semgrep /usr/local/bin
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
@@ -52,6 +46,14 @@ jobs:
     - name: Run security analysis with Bandit
       run: |
         bandit -r app -f html -o bandit-report.html || true
+
+    - name: Install Semgrep manually
+      run: |
+        curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz -o semgrep.tar.gz
+        file semgrep.tar.gz  # Check the file type
+        tar -xvzf semgrep.tar.gz || true
+        ls -l  # List the extracted files
+        sudo mv semgrep /usr/local/bin
 
     - name: Run security checks with Semgrep
       run: |
