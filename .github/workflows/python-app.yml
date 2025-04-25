@@ -47,27 +47,6 @@ jobs:
       run: |
         bandit -r app -f html -o bandit-report.html || true
 
-    # - name: Install Semgrep manually
-    #   run: |
-    #     # Download the correct Semgrep binary (ensure it's correct)
-    #     curl -sSL https://github.com/returntocorp/semgrep/releases/download/v0.74.0/semgrep-linux-amd64-v0.74.0.tar.gz -o semgrep.tar.gz
-        
-    #     # Check the file to ensure it's in the correct format
-    #     file semgrep.tar.gz
-
-    #     # If file format is correct (tar.gz), extract it
-    #     if file semgrep.tar.gz | grep -q 'gzip compressed data'; then
-    #       echo "Correct file format. Extracting...";
-    #       tar -xvzf semgrep.tar.gz;
-    #       sudo mv semgrep /usr/local/bin/semgrep;
-    #     else
-    #       echo "Download failed or file format is incorrect.";
-    #       exit 1;
-    #     fi
-
-    #     # Verify the installation
-    #     semgrep --version
-
     - name: Run security checks with Semgrep
       run: |
         semgrep --config auto --output semgrep-report.json || true
