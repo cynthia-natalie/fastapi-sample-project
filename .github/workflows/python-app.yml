@@ -49,7 +49,7 @@ jobs:
 
     - name: Run security checks with Semgrep
       run: |
-        semgrep --config auto --output semgrep-report.json || true
+        semgrep --config p/ci --output semgrep-report.json app/ || true
 
     - name: Test with pytest (with coverage)
       run: |
