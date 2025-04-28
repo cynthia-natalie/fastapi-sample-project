@@ -100,17 +100,29 @@ jobs:
         to: cynthianatalie573@gmail.com
         from: GitHub Actions <cynthianatalie573@gmail.com>
         body: |
-          CI Workflow has completed.
+          CI Workflow Summary
+          --------------------
+        
           Status: ${{ needs.build.result }}
           Branch: ${{ github.ref_name }}
           Commit: ${{ github.sha }}
           Triggered by: ${{ github.actor }}
-
+        
+          Test Results:
+          - All unit tests have been executed using Pytest.
+          - Detailed test results are available: junit/test-results.xml
+          - Coverage report generated: htmlcov/index.html
+        
+          Security Analysis:
+          - Bandit static security scan completed: bandit-report.html
+          - Semgrep static analysis completed: semgrep-report.json
+        
           Reports:
           - Coverage Report: htmlcov/index.html
           - Test Results: junit/test-results.xml
-          - Bandit Security: bandit-report.html
-          - Semgrep Security: semgrep-report.json
-
-          See details:
+          - Bandit Security Report: bandit-report.html
+          - Semgrep Security Report: semgrep-report.json
+        
+          View the full CI run details:
           https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
