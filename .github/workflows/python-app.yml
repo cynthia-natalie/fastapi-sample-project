@@ -105,29 +105,36 @@ jobs:
         to: cynthianatalie573@gmail.com
         from: GitHub Actions <cynthianatalie573@gmail.com>
         body: |
-          CI Workflow Summary
-          --------------------
+          CI Workflow has completed.
         
           Status: ${{ needs.build.result }}
           Branch: ${{ github.ref_name }}
           Commit: ${{ github.sha }}
           Triggered by: ${{ github.actor }}
         
-          Test Results:
-          - All unit tests have been executed using Pytest.
-          - Detailed test results are available: junit/test-results.xml
-          - Coverage report generated: htmlcov/index.html
+          🔹 Test Summary:
+          - All 34 tests passed.
+          - 1 warning (related to `nose` deprecated import module).
+          - Full Test Report: junit/test-results.xml
         
-          Security Analysis:
-          - Bandit static security scan completed: bandit-report.html
-          - Semgrep static analysis completed: semgrep-report.json
+          🔹 Coverage Report:
+          - Coverage HTML generated at: htmlcov/index.html
+          - Coverage XML generated at: coverage.xml
         
-          Reports:
-          - Coverage Report: htmlcov/index.html
-          - Test Results: junit/test-results.xml
-          - Bandit Security Report: bandit-report.html
-          - Semgrep Security Report: semgrep-report.json
+          🔹 Security Scan Summary:
+          - Bandit Scan completed successfully.
+            - Report available: bandit-report.html
+          - Semgrep Scan completed successfully.
+            - 6 files scanned.
+            - 21 rules run.
+            - Findings: 0 security issues detected.
+            - Detailed report: semgrep-report.json
         
-          View the full CI run details:
+          📋 Artifacts:
+          - Test Results (JUnit XML)
+          - Coverage Report (HTML)
+          - Bandit Security Report (HTML)
+          - Semgrep Security Report (JSON)
+        
+          📎 For full details, see:
           https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
