@@ -51,6 +51,11 @@ jobs:
       run: |
         semgrep --config p/ci --output semgrep-report.json app/ || true
 
+    - name: Summarize Semgrep Results
+      id: semgrep_summary
+      run: |
+        echo "findings=$(jq '.results | length' semgrep-report.json)" >> $GITHUB_ENV
+
     - name: Test with pytest (with coverage)
       run: |
         pytest tests --doctest-modules \
